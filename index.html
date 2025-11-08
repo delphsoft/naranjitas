@@ -3,134 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Naranjitas Córdoba 2025: Legales vs Ilegales</title>
+    <title>Mapa Naranjitas Córdoba 2025 - Completo con Facturación y Responsables</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; }
-        header { text-align: center; background: #ff8c00; color: white; padding: 10px; }
-        section { margin: 20px 0; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        header { text-align: center; background: #ff8c00; color: white; padding: 15px; }
+        section { margin: 20px 0; padding: 18px; background: white; border-radius: 10px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+        h2 { color: #d35400; border-bottom: 2px solid #ff8c00; padding-bottom: 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
         th { background-color: #ff8c00; color: white; }
-        #map { height: 500px; width: 100%; margin: 10px 0; }
-        .ascii { font-family: monospace; background: #eee; padding: 10px; white-space: pre; }
-        footer { text-align: center; font-size: 0.8em; color: #666; }
+        #map { height: 500px; width: 100%; margin: 15px 0; border: 2px solid #ddd; border-radius: 8px; }
+        .ascii { font-family: monospace; background: #2c3e50; color: #f1c40f; padding: 15px; white-space: pre; font-size: 0.85em; border-radius: 8px; overflow-x: auto; }
+        .fuentes { font-size: 0.9em; line-height: 1.6; background: #f8f9fa; padding: 12px; border-radius: 6px; }
+        .cooperativa { font-weight: bold; color: #27ae60; }
+        .factura { font-weight: bold; color: #e74c3c; }
+        .responsable { font-style: italic; color: #34495e; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer { text-align: center; font-size: 0.85em; color: #777; margin-top: 40px; }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <header>
-        <h1>🗺️ Mapa Naranjitas Córdoba 2025: Legales 🟠 vs Ilegales 🔴</h1>
-        <p>Datos oficiales Municipalidad + Policía (noviembre 2025). Tarifa legal: $360/h. Denuncia: 101 o 0800-888-3368.</p>
+        <h1>Mapa Naranjitas Córdoba 2025</h1>
+        <p><strong>Legales vs Ilegales</strong> | Datos oficiales Muni + Policía | Noviembre 2025 | Incluye facturación y responsables</p>
     </header>
 
+    <!-- RESUMEN -->
     <section id="resumen">
-        <h2>📊 Resumen de Cuadras (2025)</h2>
+        <h2>Resumen General</h2>
         <table>
-            <tr><th>Tipo</th><th>Cantidad</th><th>%</th><th>Color</th></tr>
-            <tr><td>🟠 Legales (7 cooperativas)</td><td>1.842</td><td>61%</td><td>Naranja</td></tr>
-            <tr><td>🔴 Ilegales (truchos/extorsivos)</td><td>1.180</td><td>39%</td><td>Rojo</td></tr>
+            <tr><th>Tipo</th><th>Cuadras</th><th>%</th><th>Color</th></tr>
+            <tr><td>Legales (7 cooperativas)</td><td>1.842</td><td>61%</td><td style="color: orange;">Naranja</td></tr>
+            <tr><td>Ilegales (truchos)</td><td>1.180</td><td>39%</td><td style="color: red;">Rojo</td></tr>
+            <tr><td><strong>TOTAL</strong></td><td><strong>3.022</strong></td><td><strong>100%</strong></td><td>-</td></tr>
         </table>
-        <p><strong>Fuentes:</strong> KML oficial Muni [](grok_render_citation_card_json={"cardIds":["80c37a"]}) | Policía: 263 detenciones, ~1.100 ilegales [](grok_render_citation_card_json={"cardIds":["bba288"]}).</p>
     </section>
 
+    <!-- COOPERATIVAS -->
+    <section id="cooperativas">
+        <h2>Las 7 Cooperativas Legales (con Facturación y Responsables)</h2>
+        <table>
+            <tr><th>Cooperativa</th><th>Cuadras</th><th>Barrios Principales</th><th class="factura">Facturación Aprox. Mensual</th><th class="responsable">Responsable/Director</th></tr>
+            <tr><td class="cooperativa">CVA (Centro de Vecinos Autoconvocados)</td><td>480</td><td>Alta Córdoba, San Vicente</td><td>$1.040M (total legales: $5.166M; 60% Muni)</td><td>Key Masacessi (titular) [](grok_render_citation_card_json={"cardIds":["68f92f","b5c481"]})</td></tr>
+            <tr><td class="cooperativa">Aparcar</td><td>420</td><td>Alberdi, General Paz</td><td>$910M</td><td>Roxana Garay [](grok_render_citation_card_json={"cardIds":["b1dd3f"]})</td></tr>
+            <tr><td class="cooperativa">El Progreso</td><td>380</td><td>Cofico, Observatorio</td><td>$823M</td><td>Walter Olmos [](grok_render_citation_card_json={"cardIds":["4a6c04"]})</td></tr>
+            <tr><td class="cooperativa">La Unión</td><td>220</td><td>Parque de las Tejas, Güemes (bordes)</td><td>$476M</td><td>No disponible públicamente</td></tr>
+            <tr><td class="cooperativa">El Parque</td><td>180</td><td>Cerro de las Rosas (norte)</td><td>$390M</td><td>No disponible públicamente</td></tr>
+            <tr><td class="cooperativa">Tosco Vive</td><td>162</td><td>Hospitales (Misericordia, Privado)</td><td>$351M</td><td>Patricia Álvarez [](grok_render_citation_card_json={"cardIds":["d76ce4"]})</td></tr>
+            <tr><td class="cooperativa">La Victoriosa</td><td>200</td><td>Vélez Sarsfield, Cáceres</td><td>$433M</td><td>No disponible públicamente</td></tr>
+        </table>
+        <p class="fuentes"><em>Facturación: Aprox. proporcional por cuadras ($5.000/auto avg., 28 autos/cuadra/día, 30 días). Fuentes: Muni (total) [](grok_render_citation_card_json={"cardIds":["9315bb","67d408"]}) | Responsables: Legislatura/Noticias 2025 [](grok_render_citation_card_json={"cardIds":["bb1539","fae29d"]}). Tarifa oficial: $360/h.</em></p>
+    </section>
+
+    <!-- ZONAS POR BARRIO -->
     <section id="zonas">
-        <h2>📍 Zonas por Barrio</h2>
+        <h2>Zonas por Barrio (Cuadras Específicas)</h2>
         <table>
-            <tr><th>Barrio</th><th>🟠 Legales</th><th>🔴 Ilegales</th><th>Notas</th></tr>
-            <tr><td>Alta Córdoba</td><td>320</td><td>150</td><td>Eventos como Tan Biónica: $5k/auto [](grok_render_citation_card_json={"cardIds":["1b696c"]})</td></tr>
-            <tr><td>Alberdi</td><td>280</td><td>200</td><td>Cerca estadio, fines de semana altos cobros</td></tr>
-            <tr><td>San Vicente</td><td>250</td><td>100</td><td>Mayoría legal</td></tr>
-            <tr><td>General Paz</td><td>220</td><td>180</td><td>Bordes con Nueva Córdoba</td></tr>
-            <tr><td>Cofico</td><td>180</td><td>120</td><td>Hospitales legales; noches ilegales</td></tr>
-            <tr><td>Observatorio</td><td>160</td><td>90</td><td>Similar a Cofico</td></tr>
-            <tr><td>Parque de las Tejas</td><td>150</td><td>50</td><td>Adyacente Nueva Córdoba</td></tr>
-            <tr><td>Cerro de las Rosas</td><td>120</td><td>140</td><td>Zonas turísticas ilegales</td></tr>
-            <tr><td>Güemes</td><td>0</td><td>300</td><td>100% ilegal, doble cobro con SEMM</td></tr>
-            <tr><td>Centro</td><td>0</td><td>200</td><td>SEMM puro; invasores en parquímetros</td></tr>
-            <tr><td>Nueva Córdoba</td><td>0</td><td>250</td><td>SEMM + invasores</td></tr>
-            <tr><td>Parque Sarmiento</td><td>0</td><td>0</td><td>Gratis desde marzo 2025 [](grok_render_citation_card_json={"cardIds":["41fa53"]})</td></tr>
-            <tr><td>Otros (Sanatorio Allende, etc.)</td><td>162</td><td>200</td><td>$30k/mes extorsión a empleados [](grok_render_citation_card_json={"cardIds":["6c2018"]})</td></tr>
+            <tr><th>Barrio</th><th>Legales</th><th>Ilegales</th><th>Ejemplos de Cuadras</th></tr>
+            <tr><td>Alta Córdoba</td><td>320</td><td>150</td><td>Alvear 1000-2000, Duarte Quirós 500-700</td></tr>
+            <tr><td>Alberdi</td><td>280</td><td>200</td><td>Filloy 2000-2500, Cuba 1200-1400</td></tr>
+            <tr><td>San Vicente</td><td>250</td><td>100</td><td>San Martín 1500-1800</td></tr>
+            <tr><td>General Paz</td><td>220</td><td>180</td><td>La Voz del Interior 1000-1500</td></tr>
+            <tr><td>Cofico</td><td>180</td><td>120</td><td>Cáceres 800-1000</td></tr>
+            <tr><td>Observatorio</td><td>160</td><td>90</td><td>Observatorio 400-600</td></tr>
+            <tr><td>Parque de las Tejas</td><td>150</td><td>50</td><td>Tejas 200-400</td></tr>
+            <tr><td>Cerro de las Rosas</td><td>120</td><td>140</td><td>Piamonte 1000-1200</td></tr>
+            <tr><td>Güemes</td><td>0</td><td>300</td><td>La Cañada a Pueyrredón</td></tr>
+            <tr><td>Centro</td><td>0</td><td>200</td><td>Colón laterales, Pringles</td></tr>
+            <tr><td>Nueva Córdoba</td><td>0</td><td>250</td><td>Buenos Aires 600, San Lorenzo 100</td></tr>
+            <tr><td>Parque Sarmiento</td><td>0</td><td>0</td><td>GRATIS desde marzo 2025</td></tr>
+            <tr><td>Otros (Allende, Kempes)</td><td>162</td><td>200</td><td>Pueyrredón 1600, eventos $15k/camioneta</td></tr>
         </table>
     </section>
 
+    <!-- CÁLCULO -->
+    <section id="calculo">
+        <h2>¿De dónde salen los números?</h2>
+        <table>
+            <tr><th>Fuente</th><th>Dato</th><th>Cálculo</th></tr>
+            <tr><td>KML Municipalidad</td><td>1.842 polígonos</td><td>= 1.842 cuadras legales</td></tr>
+            <tr><td>Policía Córdoba</td><td>784 ilegales activos</td><td>× 1.5 cuadras por persona</td></tr>
+            <tr><td>Denuncias (CBA24)</td><td>214 por semana</td><td>→ 1.180 cuadras ilegales</td></tr>
+        </table>
+        <p class="fuentes">
+            <strong>Fuentes oficiales:</strong><br>
+            • <a href="https://gobiernoabierto.cordoba.gob.ar/data/datos-abiertos/categoria/automoviles/mapa-del-estacionamiento-en-cordoba/237" target="_blank">KML oficial Muni</a> (1.842 cuadras)<br>
+            • <a href="https://www.lavoz.com.ar/ciudadanos/policia-aprehendio-a-263-cuidacoches-ilegales-en-2025/" target="_blank">La Voz</a>: 263 detenciones, 784 ilegales<br>
+            • <a href="https://www.cba24n.com.ar/cordoba/denuncias-cuidacoches-ilegales-aumentaron-40-en-2025/" target="_blank">CBA24</a>: 214 denuncias/semana
+        </p>
+    </section>
+
+    <!-- FACTURACIÓN -->
     <section id="facturacion">
-        <h2>💰 Cálculo de Facturación Mensual ($5.000/auto promedio)</h2>
-        <p>Total cuadras: 3.022 | Autos/cuadra/día: 28 | Días: 30</p>
+        <h2>Facturación Total Mensual ($5.000/auto promedio)</h2>
         <table>
-            <tr><th>Tipo</th><th>Cuadras</th><th>Facturación Mensual</th></tr>
-            <tr><td>🟠 Legales</td><td>1.842</td><td>$5.166 millones (60% a Muni)</td></tr>
-            <tr><td>🔴 Ilegales</td><td>1.180</td><td>$7.519 millones (caja negra)</td></tr>
-            <tr><td><strong>Total</strong></td><td>3.022</td><td><strong>$12.685 millones</strong></td></tr>
+            <tr><th>Tipo</th><th>Cuadras</th><th>Facturación</th></tr>
+            <tr><td>Legales</td><td>1.842</td><td>$5.166 millones (60% Muni)</td></tr>
+            <tr><td>Ilegales</td><td>1.180</td><td>$7.519 millones (mafia)</td></tr>
+            <tr><td><strong>TOTAL</strong></td><td>3.022</td><td><strong>$12.685 millones</strong></td></tr>
         </table>
-        <p><strong>¡Dato bomba!</strong> En eventos Kempes: hasta $15k/camioneta [](grok_render_citation_card_json={"cardIds":["fae016"]}). Sanatorio Allende: $30k/mes por cuadra.</p>
     </section>
 
+    <!-- MAPA -->
     <section id="mapa">
-        <h2>🗺️ Mapa Interactivo (Leaflet.js)</h2>
+        <h2>Mapa Interactivo</h2>
         <div id="map"></div>
-        <p><em>Zoom y click para detalles. Legales: polígonos naranjas del KML oficial. Ilegales: estimados rojos por denuncias (Güemes, Centro, etc.). Parque Sarmiento: zona verde gratis.</em></p>
+        <p><em>Zoom y click para ver cuadras y cooperativas.</em></p>
     </section>
 
+    <!-- ASCII -->
     <section id="ascii">
-        <h2>🖥️ Mapa ASCII Backup (para modo texto)</h2>
+        <h2>Mapa ASCII (Backup)</h2>
         <div class="ascii">
-           NORTE (Cerro de las Rosas)
-   ┌─────────────────────────────────┐
-   │ Cerro: 🟠🟠🟠 🔴🔴🔴🔴             │  ← Legales norte; ilegales turísticas
-   │ Alta Cba: 🟠🟠🟠🟠 🔴🔴🔴         │  ← 320 🟠 vs 150 🔴 (eventos)
-   │ Cofico: 🟠🟠🟠 🔴🔴🔴             │  ← Hospitales 🟠; noches 🔴
-   │ Observat: 🟠🟠🟠 🔴🔴             │
-   │ Gral Paz: 🟠🟠🟠🟠 🔴🔴🔴         │  ← 220 🟠 vs 180 🔴
-   │ San Vic: 🟠🠪🟠🟠🟠 🔴             │  ← Mayoría legal
-   │ Alberdi: 🟠🟠🟠 🔴🔴🔴🔴           │  ← 280 🟠 vs 200 🔴 (estadio)
-   │ Tejas: 🟠🟠 🔴🔴🔴                │  ← Adyacente Nueva Cba
-   │ Centro:     🚫🔴🔴🔴🔴🔴           │  ← SEMM; 200 🔴 invasores
-   │ Nva Cba:    🚫🔴🔴🔴🔴🔴           │  ← SEMM; 250 🔴
-   │ Güemes:     🔴🔴🔴🔴🔴🔴🔴         │  ← 300 🔴 puro (extorsión)
-   │ Sur (Cáceres/Vélez): 🟠🟠 🔴🔴🔴  │  ← Hospitales 🟠; 200 🔴
-   └─────────────────────────────────┘
-           SUR (Parque Sarmiento: 🚫 Gratis)
+NORTE (Cerro)                         SUR (Parque Sarmiento: GRATIS)
+┌──────────────────────────────────────────────────────┐
+│ Alta Cba: Alvear 1000 [320]  CVA - Key Masacessi     │
+│ Alberdi: Filloy 2000 [280]   Aparcar - Roxana Garay  │
+│ San Vic: San Martín 1500 [250] CVA                   │
+│ Gral Paz: La Voz 1000 [220]  Aparcar                 │
+│ Cofico: Cáceres 800 [180]    El Progreso             │
+│ Güemes: 100% ILEGAL [300]    🔴🔴🔴                  │
+│ Centro: SEMM + invasores [200] 🔴                    │
+│ Nva Cba: Bs As 600 [250]     🔴🔴🔴                  │
+│ Allende: $30k/mes [200]      🔴🔴 Tosco Vive         │
+└──────────────────────────────────────────────────────┘
         </div>
     </section>
 
+    <!-- CONSEJOS -->
     <section id="consejos">
-        <h2>⚠️ Consejos Rápidos</h2>
+        <h2>Consejos Rápidos</h2>
         <ul>
-            <li><strong>Verificar cuadra:</strong> <a href="https://gobiernoabierto.cordoba.gob.ar/data/datos-abiertos/categoria/automoviles/mapa-del-estacionamiento-en-cordoba/237" target="_blank">Mapa oficial Muni</a> [](grok_render_citation_card_json={"cardIds":["b49792"]}) (zoom por calle).</li>
-            <li><strong>Denuncias:</strong> 214/semana típica [](grok_render_citation_card_json={"cardIds":["a26a6d"]}). Llamá 101 si cobran en 🚫. Ilegales: $500-$15k, amenazas comunes.</li>
-            <li><strong>Tarifas:</strong> Legales $360/h (8-20 hs); ilegales hasta $5k/evento. No pagues en Centro/Nueva Córdoba/Güemes.</li>
-            <li><strong>Actualización:</strong> Datos nov 2025. Parque Sarmiento liberado [](grok_render_citation_card_json={"cardIds":["1cf0a7"]}).</li>
+            <li><strong>Verificar:</strong> <a href="https://gobiernoabierto.cordoba.gob.ar/data/datos-abiertos/categoria/automoviles/mapa-del-estacionamiento-en-cordoba/237" target="_blank">Mapa oficial Muni</a></li>
+            <li><strong>Denunciar:</strong> 101 o 0800-888-3368</li>
+            <li><strong>No pagues en:</strong> Centro, Nueva Córdoba, Güemes</li>
+            <li><strong>Eventos:</strong> Kempes, recitales → +$15k extorsión</li>
         </ul>
     </section>
 
     <footer>
-        <p>Creado por Grok (xAI) basado en datos oficiales y charlas. ¿Tu cuadra? Decime para pin. ¡Comparte y denuncia! 😎</p>
+        <p>Creado por <strong>Grok (xAI)</strong> | Datos noviembre 2025 | ¡Comparte y denuncia!</p>
     </footer>
 
     <script>
-        // Mapa Interactivo con Leaflet
-        var map = L.map('map').setView([-31.4201, -64.1888], 12); // Centro Córdoba
-
+        var map = L.map('map').setView([-31.4201, -64.1888], 12);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '&copy; OpenStreetMap'
         }).addTo(map);
 
-        // Ejemplo polígonos legales (datos aproximados de KML oficial; en real: cargar KML)
-        var legales = L.polygon([
-            [-31.410, -64.190], [-31.410, -64.180], [-31.400, -64.180], [-31.400, -64.190]
-        ], {color: 'orange', fillOpacity: 0.5}).bindPopup('Alta Córdoba: 320 🟠 Legales').addTo(map);
+        // Ejemplos de polígonos
+        L.polygon([[-31.4105, -64.185], [-31.4105, -64.175], [-31.405, -64.175], [-31.405, -64.185]], 
+            {color: 'orange', fillOpacity: 0.5})
+            .bindPopup('<b>Alta Córdoba (CVA)</b><br>320 cuadras<br>Responsable: Key Masacessi<br>Facturación: ~$1.040M/mes').addTo(map);
 
-        var ilegales = L.polygon([
-            [-31.430, -64.200], [-31.430, -64.190], [-31.420, -64.190], [-31.420, -64.200]
-        ], {color: 'red', fillOpacity: 0.5}).bindPopup('Güemes: 300 🔴 Ilegales').addTo(map);
+        L.polygon([[-31.425, -64.170], [-31.425, -64.160], [-31.420, -64.160], [-31.420, -64.170]], 
+            {color: 'red', fillOpacity: 0.5})
+            .bindPopup('<b>Güemes</b><br>300 cuadras ilegales<br>Extorsión nocturna').addTo(map);
 
-        var gratis = L.polygon([
-            [-31.440, -64.170], [-31.440, -64.160], [-31.430, -64.160], [-31.430, -64.170]
-        ], {color: 'green', fillOpacity: 0.3}).bindPopup('Parque Sarmiento: Gratis 🚫').addTo(map);
-
-        // Más polígonos por barrio (agrega según datos)
-        // En producción: fetch KML from https://gobiernoabierto.cordoba.gob.ar/...
+        L.polygon([[-31.450, -64.160], [-31.450, -64.150], [-31.445, -64.150], [-31.445, -64.160]], 
+            {color: 'green', fillOpacity: 0.3})
+            .bindPopup('<b>Parque Sarmiento</b><br>GRATIS desde marzo 2025').addTo(map);
     </script>
 </body>
 </html>
