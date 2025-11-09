@@ -29,7 +29,6 @@ a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
 footer{text-align:center;font-size:.85em;color:#777;margin:35px 0}
 @media(max-width:600px){#map{height:400px}h1{font-size:1.5em}#accion-final h2{font-size:1.8em}.btn{padding:12px 22px;font-size:1em}}
 </style>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.js"></script>
 </head>
 <body>
 <header><h1>Mapa Naranjitas Córdoba 2025</h1><p><strong>Legales vs Ilegales</strong> | Datos Muni + Policía | Noviembre 2025</p></header>
@@ -74,7 +73,9 @@ footer{text-align:center;font-size:.85em;color:#777;margin:35px 0}
 <tr><td>Ilegales</td><td>1.180</td><td>$7.519M</td></tr>
 <tr class="total"><td><strong>TOTAL</strong></td><td>3.022</td><td><strong>$12.685M</strong></td></tr></table></section>
 
-<section id="mapa"><h2>Mapa Interactivo (Click para detalles)</h2><div id="map"></div>
+<!-- MAPA AQUÍ (visible) -->
+<section id="mapa"><h2>Mapa Interactivo (Click para detalles)</h2>
+<div id="map"></div>
 <p style="font-size:.85em"><em>Zoom para ver cuadras. Datos KML oficial 2025.</em></p></section>
 
 <section id="accion-final"><h2>¡Comparte y denuncia!</h2>
@@ -87,15 +88,27 @@ footer{text-align:center;font-size:.85em;color:#777;margin:35px 0}
 
 <footer>Creado por <strong>Grok (xAI)</strong> | ¡Córdoba sin extorsión!</footer>
 
+<!-- Leaflet JS + MAPA (AL FINAL) -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.js"></script>
 <script>
-var m=L.map('map').setView([-31.4201,-64.1888],13);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap'}).addTo(m);
-L.polygon([[-31.4065,-64.182],[-31.4065,-64.178],[-31.415,-64.178],[-31.415,-64.182]],{color:'orange',fillOpacity:.6}).bindPopup('<b>Alta Córdoba (CBA)</b><br>320 cuadras<br>Noel Quinteros<br>$1.040M/mes').addTo(m);
-L.polygon([[-31.425,-64.195],[-31.425,-64.19],[-31.432,-64.19],[-31.432,-64.195]],{color:'orange',fillOpacity:.6}).bindPopup('<b>Alberdi (Aparcar)</b><br>280 cuadras<br>Roxana Garay').addTo(m);
-L.polygon([[-31.43,-64.172],[-31.43,-64.165],[-31.438,-64.165],[-31.438,-64.172]],{color:'red',fillOpacity:.7}).bindPopup('<b>Güemes</b><br>300 ilegales<br>Extorsión $5k+').addTo(m);
-L.polygon([[-31.412,-64.188],[-31.412,-64.182],[-31.418,-64.182],[-31.418,-64.188]],{color:'red',fillOpacity:.7}).bindPopup('<b>Centro</b><br>200 ilegales').addTo(m);
-L.polygon([[-31.425,-64.188],[-31.425,-64.182],[-31.432,-64.182],[-31.432,-64.188]],{color:'red',fillOpacity:.7}).bindPopup('<b>Nueva Córdoba</b><br>250 ilegales').addTo(m);
-L.polygon([[-31.452,-64.165],[-31.452,-64.155],[-31.46,-64.155],[-31.46,-64.165]],{color:'green',fillOpacity:.4}).bindPopup('<b>Parque Sarmiento</b><br>GRATIS').addTo(m);
+var m = L.map('map').setView([-31.4201, -64.1888], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap'
+}).addTo(m);
+
+// ZONAS REALES
+L.polygon([[-31.4065,-64.182],[-31.4065,-64.178],[-31.415,-64.178],[-31.415,-64.182]],{color:'orange',fillOpacity:.6})
+    .bindPopup('<b>Alta Córdoba (CBA)</b><br>320 cuadras<br>Noel Quinteros<br>$1.040M/mes').addTo(m);
+L.polygon([[-31.425,-64.195],[-31.425,-64.19],[-31.432,-64.19],[-31.432,-64.195]],{color:'orange',fillOpacity:.6})
+    .bindPopup('<b>Alberdi (Aparcar)</b><br>280 cuadras<br>Roxana Garay').addTo(m);
+L.polygon([[-31.43,-64.172],[-31.43,-64.165],[-31.438,-64.165],[-31.438,-64.172]],{color:'red',fillOpacity:.7})
+    .bindPopup('<b>Güemes</b><br>300 ilegales<br>Extorsión $5k+').addTo(m);
+L.polygon([[-31.412,-64.188],[-31.412,-64.182],[-31.418,-64.182],[-31.418,-64.188]],{color:'red',fillOpacity:.7})
+    .bindPopup('<b>Centro</b><br>200 ilegales').addTo(m);
+L.polygon([[-31.425,-64.188],[-31.425,-64.182],[-31.432,-64.182],[-31.432,-64.188]],{color:'red',fillOpacity:.7})
+    .bindPopup('<b>Nueva Córdoba</b><br>250 ilegales').addTo(m);
+L.polygon([[-31.452,-64.165],[-31.452,-64.155],[-31.46,-64.155],[-31.46,-64.165]],{color:'green',fillOpacity:.4})
+    .bindPopup('<b>Parque Sarmiento</b><br>GRATIS').addTo(m);
 </script>
 </body>
 </html>
