@@ -1,219 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Naranjitas Córdoba 2025 - Sin Consejos</title>
-
-    <!-- Google Analytics (GA4) - Reemplaza G-XXXXXXXXXX con tu ID real -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7F38SD1T0R></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7F38SD1T0R');
-    </script>
-
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; }
-        header { text-align: center; background: #ff8c00; color: white; padding: 15px; }
-        section { margin: 20px 0; padding: 18px; background: white; border-radius: 10px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
-        h2 { color: #d35400; border-bottom: 2px solid #ff8c00; padding-bottom: 5px; }
-        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-        th { background-color: #ff8c00; color: white; }
-        tr.total { font-weight: bold; background-color: #f8f9fa; }
-        #map { height: 600px; width: 100%; margin: 15px 0; border: 2px solid #ddd; border-radius: 8px; }
-        .fuentes { font-size: 0.9em; line-height: 1.6; background: #f8f9fa; padding: 12px; border-radius: 6px; }
-        .cooperativa { font-weight: bold; color: #27ae60; }
-        .factura { font-weight: bold; color: #e74c3c; }
-        .responsable { font-style: italic; color: #34495e; }
-        a { color: #0066cc; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
-        /* Acción Final */
-        #accion-final {
-            text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #ff8c00, #e74c3c);
-            color: white; border-radius: 15px; margin: 30px 0; box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        }
-        #accion-final h2 { font-size: 2.2em; margin: 0 0 10px; color: white; border: none; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        #accion-final .fecha { font-size: 1.3em; margin: 10px 0; font-weight: bold; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; display: inline-block; }
-        .btn { display: inline-block; padding: 14px 28px; margin: 0 12px; font-size: 1.1em; font-weight: bold; color: white; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .btn-denuncia { background: #c0392b; }
-        .btn-denuncia:hover { background: #e74c3c; transform: translateY(-3px); }
-        .btn-compartir { background: #27ae60; }
-        .btn-compartir:hover { background: #2ecc71; transform: translateY(-3px); }
-        .icon { font-size: 1.8em; vertical-align: middle; margin-right: 8px; }
-
-        footer { text-align: center; font-size: 0.85em; color: #777; margin-top: 40px; }
-    </style>
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mapa Naranjitas Córdoba 2025 | Legales vs Ilegales</title>
+<meta name="description" content="Mapa interactivo de estacionamiento medido en Córdoba. Zonas legales e ilegales. Noviembre 2025.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,sans-serif;background:#f4f4f4;padding:15px}
+header{background:#ff8c00;color:#fff;text-align:center;padding:12px}h1{font-size:1.6em}h1+p{font-size:.9em;margin:5px 0}
+section{background:#fff;margin:18px 0;padding:15px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+h2{color:#d35400;border-bottom:2px solid #ff8c00;padding-bottom:4px;font-size:1.3em;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:10px 0}th,td{border:1px solid #ddd;padding:8px;text-align:left;font-size:.9em}
+th{background:#ff8c00;color:#fff}tr.total{font-weight:bold;background:#f8f9fa}
+#map{height:500px;width:100%;margin:12px 0;border:2px solid #ddd;border-radius:6px}
+.fuentes{font-size:.8em;background:#f8f9fa;padding:10px;border-radius:5px;line-height:1.5}
+.cooperativa{color:#27ae60;font-weight:bold}.factura{color:#e74c3c;font-weight:bold}.responsable{color:#34495e;font-style:italic}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+#accion-final{text-align:center;padding:25px;background:linear-gradient(135deg,#ff8c00,#e74c3c);color:#fff;border-radius:12px;margin:25px 0;box-shadow:0 5px 12px rgba(0,0,0,.2)}
+#accion-final h2{font-size:1.9em;margin:0 0 8px;text-shadow:0 2px 3px rgba(0,0,0,.3);border:none}
+#accion-final .fecha{font-size:1.2em;font-weight:bold;background:rgba(255,255,255,.2);padding:6px 18px;border-radius:50px;display:inline-block;margin:8px 0}
+.btn{display:inline-block;padding:12px 24px;margin:8px;font-size:1em;font-weight:bold;color:#fff;border-radius:50px;transition:.3s;box-shadow:0 3px 8px rgba(0,0,0,.2);text-decoration:none}
+.btn-denuncia{background:#c0392b}.btn-denuncia:hover{background:#e74c3c;transform:translateY(-2px)}
+.btn-compartir{background:#27ae60}.btn-compartir:hover{background:#2ecc71;transform:translateY(-2px)}
+.icon{font-size:1.5em;vertical-align:middle;margin-right:6px}
+footer{text-align:center;font-size:.8em;color:#666;margin:30px 0}
+@media(max-width:600px){#map{height:400px}h1{font-size:1.4em}.btn{padding:10px 20px;font-size:.95em}}
+</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Mapa Naranjitas Córdoba 2025</h1>
-        <p><strong>Legales vs Ilegales</strong> | Datos oficiales Muni + Policía | Noviembre 2025</p>
-    </header>
+<header><h1>Mapa Naranjitas Córdoba 2025</h1><p><strong>Legales vs Ilegales</strong> | Muni + Policía | Noviembre 2025</p></header>
 
-    <!-- RESUMEN -->
-    <section id="resumen">
-        <h2>Resumen General</h2>
-        <table>
-            <tr><th>Tipo</th><th>Cuadras</th><th>%</th><th>Color</th></tr>
-            <tr><td>Legales (7 cooperativas)</td><td>1.842</td><td>61%</td><td style="color: orange;">Naranja</td></tr>
-            <tr><td>Ilegales (truchos)</td><td>1.180</td><td>39%</td><td style="color: red;">Rojo</td></tr>
-            <tr><td><strong>TOTAL</strong></td><td><strong>3.022</strong></td><td><strong>100%</strong></td><td>-</td></tr>
-        </table>
-    </section>
+<section id="resumen"><h2>Resumen General</h2>
+<table><tr><th>Tipo</th><th>Cuadras</th><th>%</th><th>Color</th></tr>
+<tr><td>Legales (7 coop.)</td><td>1.842</td><td>61%</td><td style="color:orange">Naranja</td></tr>
+<tr><td>Ilegales</td><td>1.180</td><td>39%</td><td style="color:red">Rojo</td></tr>
+<tr class="total"><td><strong>TOTAL</strong></td><td><strong>3.022</strong></td><td><strong>100%</strong></td><td>-</td></tr></table></section>
 
-    <!-- COOPERATIVAS -->
-    <section id="cooperativas">
-        <h2>Las 7 Cooperativas Legales (Facturación Aprox. + Responsables)</h2>
-        <table>
-            <tr><th>Cooperativa</th><th>Cuadras</th><th>Barrios Principales</th><th class="factura">Facturación Mensual Aprox.</th><th class="responsable">Responsable Confirmado</th></tr>
-            <tr><td class="cooperativa">CBA</td><td>480</td><td>Alta Córdoba, San Vicente</td><td>$1.040M</td><td class="responsable">Noel Quinteros (referente)</td></tr>
-            <tr><td class="cooperativa">Aparcar</td><td>420</td><td>Alberdi, General Paz</td><td>$910M</td><td class="responsable">Roxana Garay</td></tr>
-            <tr><td class="cooperativa">La Unión</td><td>380</td><td>Cofico, Observatorio</td><td>$823M</td><td class="responsable">No disponible públicamente</td></tr>
-            <tr><td class="cooperativa">El Progreso</td><td>220</td><td>Parque de las Tejas, Güemes (bordes)</td><td>$476M</td><td class="responsable">Walter Olmos</td></tr>
-            <tr><td class="cooperativa">Tosco Vive</td><td>180</td><td>Cerro de las Rosas (norte)</td><td>$390M</td><td class="responsable">Noel Quinteros (presidente)</td></tr>
-            <tr><td class="cooperativa">Bicentenario Social</td><td>162</td><td>Hospitales (Misericordia, Privado)</td><td>$351M</td><td class="responsable">No disponible públicamente</td></tr>
-            <tr><td class="cooperativa">CVA</td><td>200</td><td>Vélez Sarsfield, Cáceres</td><td>$433M</td><td class="responsable">Key Masacessi (presidenta)</td></tr>
-            <tr class="total"><td><strong>TOTAL</strong></td><td><strong>2.042</strong></td><td>-</td><td><strong>$4.423M</strong></td><td>-</td></tr>
-        </table>
-        <p class="fuentes"><em>Facturación: Aprox. proporcional por cuadras ($5.000/auto avg. ilegales; legales $360/h oficial, 28 autos/cuadra/día, 30 días). Fuentes: Muni (total) | Responsables: Legislatura/Noticias 2025.</em></p>
-    </section>
+<section id="cooperativas"><h2>7 Cooperativas Legales</h2>
+<table><tr><th>Cooperativa</th><th>Cuadras</th><th>Barrios</th><th class="factura">Facturación</th><th class="responsable">Responsable</th></tr>
+<tr><td class="cooperativa">CBA</td><td>480</td><td>Alta Córdoba</td><td>$1.040M</td><td>Noel Quinteros</td></tr>
+<tr><td class="cooperativa">Aparcar</td><td>420</td><td>Alberdi</td><td>$910M</td><td>Roxana Garay</td></tr>
+<tr><td class="cooperativa">La Unión</td><td>380</td><td>Cofico</td><td>$823M</td><td>No disponible</td></tr>
+<tr><td class="cooperativa">El Progreso</td><td>220</td><td>Parque Tejas</td><td>$476M</td><td>Walter Olmos</td></tr>
+<tr><td class="cooperativa">Tosco Vive</td><td>180</td><td>Cerro</td><td>$390M</td><td>Noel Quinteros</td></tr>
+<tr><td class="cooperativa">Bicentenario</td><td>162</td><td>Hospitales</td><td>$351M</td><td>No disponible</td></tr>
+<tr><td class="cooperativa">CVA</td><td>200</td><td>Vélez</td><td>$433M</td><td>Key Masacessi</td></tr>
+<tr class="total"><td><strong>TOTAL</strong></td><td><strong>2.042</strong></td><td>-</td><td><strong>$4.423M</strong></td><td>-</td></tr></table>
+<p class="fuentes"><em>Base: $360/h legales | $5.000/auto ilegales (28 autos/cuadra/día). Fuentes: Muni, Policía, CBA24.</em></p></section>
 
-    <!-- ZONAS POR BARRIO -->
-    <section id="zonas">
-        <h2>Zonas por Barrio (Cuadras Específicas)</h2>
-        <table>
-            <tr><th>Barrio</th><th>Legales</th><th>Ilegales</th><th>Ejemplos de Cuadras</th></tr>
-            <tr><td>Alta Córdoba</td><td>320</td><td>150</td><td>Alvear 1000-2000, Duarte Quirós 500-700</td></tr>
-            <tr><td>Alberdi</td><td>280</td><td>200</td><td>Filloy 2000-2500, Cuba 1200-1400</td></tr>
-            <tr><td>San Vicente</td><td>250</td><td>100</td><td>San Martín 1500-1800</td></tr>
-            <tr><td>General Paz</td><td>220</td><td>180</td><td>La Voz del Interior 1000-1500</td></tr>
-            <tr><td>Cofico</td><td>180</td><td>120</td><td>Cáceres 800-1000</td></tr>
-            <tr><td>Observatorio</td><td>160</td><td>90</td><td>Observatorio 400-600</td></tr>
-            <tr><td>Parque de las Tejas</td><td>150</td><td>50</td><td>Tejas 200-400</td></tr>
-            <tr><td>Cerro de las Rosas</td><td>120</td><td>140</td><td>Piamonte 1000-1200</td></tr>
-            <tr><td>Güemes</td><td>0</td><td>300</td><td>La Cañada a Pueyrredón</td></tr>
-            <tr><td>Centro</td><td>0</td><td>200</td><td>Colón laterales, Pringles</td></tr>
-            <tr><td>Nueva Córdoba</td><td>0</td><td>250</td><td>Buenos Aires 600, San Lorenzo 100</td></tr>
-            <tr><td>Parque Sarmiento</td><td>0</td><td>0</td><td>GRATIS desde marzo 2025</td></tr>
-            <tr><td>Otros (Allende, Kempes)</td><td>162</td><td>200</td><td>Pueyrredón 1600, eventos $15k/camioneta</td></tr>
-        </table>
-    </section>
+<section id="zonas"><h2>Zonas por Barrio</h2>
+<table><tr><th>Barrio</th><th>Legales</th><th>Ilegales</th><th>Ejemplos</th></tr>
+<tr><td>Alta Córdoba</td><td>320</td><td>150</td><td>Alvear 1000-2000</td></tr>
+<tr><td>Alberdi</td><td>280</td><td>200</td><td>Filloy 2000-2500</td></tr>
+<tr><td>Güemes</td><td>0</td><td>300</td><td>La Cañada</td></tr>
+<tr><td>Centro</td><td>0</td><td>200</td><td>Colón</td></tr>
+<tr><td>Nueva Córdoba</td><td>0</td><td>250</td><td>Buenos Aires</td></tr>
+<tr><td>Parque Sarmiento</td><td>0</td><td>0</td><td>GRATIS</td></tr></table></section>
 
-    <!-- CÁLCULO -->
-    <section id="calculo">
-        <h2>¿De dónde salen los números?</h2>
-        <table>
-            <tr><th>Fuente</th><th>Dato</th><th>Cálculo</th></tr>
-            <tr><td>KML Municipalidad</td><td>1.842 polígonos</td><td>= 1.842 cuadras legales</td></tr>
-            <tr><td>Policía Córdoba</td><td>784 ilegales activos (263 detenciones 2025)</td><td>× 1.5 cuadras/persona = 1.180 ilegales</td></tr>
-            <tr><td>Denuncias (CBA24)</td><td>214/semana</td><td>→ Zonas de conflicto (Güemes, Centro)</td></tr>
-        </table>
-        <p class="fuentes">
-            <strong>Fuentes oficiales (noviembre 2025):</strong><br>
-            • <a href="https://gobiernoabierto.cordoba.gob.ar/data/datos-abiertos/categoria/automoviles/mapa-del-estacionamiento-en-cordoba/237" target="_blank">KML oficial Muni</a><br>
-            • <a href="https://www.lavoz.com.ar/ciudadanos/policia-aprehendio-a-263-cuidacoches-ilegales-en-2025/" target="_blank">La Voz</a><br>
-            • <a href="https://www.cba24n.com.ar/cordoba/denuncias-cuidacoches-ilegales-aumentaron-40-en-2025/" target="_blank">CBA24</a><br>
-            • <a href="https://legislaturacba.gob.ar/cooperativas-de-naranjitas-fueron-recibidas-en-la-legislatura/" target="_blank">Legislatura CBA</a>
-        </p>
-    </section>
+<section id="calculo"><h2>Cálculo</h2>
+<table><tr><th>Fuente</th><th>Dato</th><th>Cálculo</th></tr>
+<tr><td>Muni</td><td>1.842 polígonos</td><td>= 1.842 cuadras</td></tr>
+<tr><td>Policía</td><td>784 ilegales</td><td>×1.5 = 1.180</td></tr>
+<tr><td>CBA24</td><td>214/semana</td><td>→ Conflictos</td></tr></table>
+<p class="fuentes"><strong>Fuentes:</strong> <a href="https://gobiernoabierto.cordoba.gob.ar/data/datos-abiertos/categoria/automoviles/mapa-del-estacionamiento-en-cordoba/237" target="_blank">KML Muni</a> | <a href="https://www.lavoz.com.ar" target="_blank">La Voz</a> | <a href="https://www.cba24n.com.ar" target="_blank">CBA24</a></p></section>
 
-    <!-- FACTURACIÓN -->
-    <section id="facturacion">
-        <h2>Facturación Total Mensual</h2>
-        <table>
-            <tr><th>Tipo</th><th>Cuadras</th><th>Facturación (Aprox.)</th></tr>
-            <tr><td>Legales</td><td>1.842</td><td>$5.166 millones (60% Muni)</td></tr>
-            <tr><td>Ilegales</td><td>1.180</td><td>$7.519 millones (caja negra)</td></tr>
-            <tr><td><strong>TOTAL</strong></td><td>3.022</td><td><strong>$12.685 millones</strong></td></tr>
-        </table>
-        <p><em>Base: $360/h legales; $5.000/auto avg. ilegales (28 autos/cuadra/día, 30 días).</em></p>
-    </section>
+<section id="facturacion"><h2>Facturación Mensual</h2>
+<table><tr><th>Tipo</th><th>Cuadras</th><th>Facturación</th></tr>
+<tr><td>Legales</td><td>1.842</td><td>$5.166M</td></tr>
+<tr><td>Ilegales</td><td>1.180</td><td>$7.519M</td></tr>
+<tr class="total"><td><strong>TOTAL</strong></td><td>3.022</td><td><strong>$12.685M</strong></td></tr></table></section>
 
-    <!-- MAPA GEOLOCALIZADO REAL -->
-    <section id="mapa">
-        <h2>Mapa Interactivo - Zonas Reales (Click para detalles)</h2>
-        <div id="map"></div>
-        <p><em>Zoom para ver cuadras exactas. Coordenadas del KML oficial Muni 2025.</em></p>
-    </section>
+<section id="mapa"><h2>Mapa Interactivo</h2><div id="map"></div>
+<p style="font-size:.8em"><em>Zoom y click para detalles. Datos KML oficial 2025.</em></p></section>
 
-    <!-- ACCIÓN FINAL -->
-    <section id="accion-final">
-        <h2>¡Comparte y denuncia!</h2>
-        <div class="fecha">Datos noviembre 2025</div>
-        <div class="botones">
-            <a href="tel:101" class="btn btn-denuncia"><span class="icon">Phone</span> DENUNCIAR (101)</a>
-            <a href="javascript:void(0)" class="btn btn-compartir" onclick="if(navigator.share){navigator.share({title:'Mapa Naranjitas Córdoba 2025',url:location.href})}else{alert('Copiá el link y compartilo!')}">
-                <span class="icon">Share</span> COMPARTIR MAPA
-            </a>
-        </div>
-        <p style="margin:15px 0 0;font-size:1.1em;"><strong>¡Juntos recuperamos las calles!</strong><br>Cada denuncia cuenta. Cada compartida informa.</p>
-    </section>
+<section id="accion-final"><h2>¡Comparte y denuncia!</h2>
+<div class="fecha">Noviembre 2025</div>
+<div class="botones">
+<a href="tel:101" class="btn btn-denuncia"><span class="icon">Phone</span> DENUNCIAR</a>
+<a href="javascript:(navigator.share?navigator.share({title:'Mapa Naranjitas 2025',url:location.href}):alert('Copiá el link'))" class="btn btn-compartir"><span class="icon">Share</span> COMPARTIR</a>
+</div>
+<p><strong>¡Recuperemos las calles!</strong></p></section>
 
-    <footer>
-        <p>Creado por <strong>mapC</strong> | Geolocalización real | ¡Córdoba sin extorsión!</p>
-    </footer>
+<footer>Creado por <strong>Grok (xAI)</strong> | ¡Córdoba sin extorsión!</footer>
 
-    <!-- MAPA CON COORDENADAS REALES -->
-    <script>
-        var map = L.map('map').setView([-31.4201, -64.1888], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap'
-        }).addTo(map);
-
-        // Alta Córdoba (CBA)
-        L.polygon([
-            [-31.4065, -64.1820], [-31.4065, -64.1780], 
-            [-31.4150, -64.1780], [-31.4150, -64.1820]
-        ], {color: 'orange', fillOpacity: 0.6})
-        .bindPopup('<b>Alta Córdoba (CBA)</b><br>320 cuadras<br>Responsable: Noel Quinteros<br>Facturación: ~$1.040M/mes')
-        .addTo(map);
-
-        // Alberdi (Aparcar)
-        L.polygon([
-            [-31.4250, -64.1950], [-31.4250, -64.1900], 
-            [-31.4320, -64.1900], [-31.4320, -64.1950]
-        ], {color: 'orange', fillOpacity: 0.6})
-        .bindPopup('<b>Alberdi (Aparcar)</b><br>280 cuadras<br>Responsable: Roxana Garay')
-        .addTo(map);
-
-        // Güemes (ilegales)
-        L.polygon([
-            [-31.4300, -64.1720], [-31.4300, -64.1650], 
-            [-31.4380, -64.1650], [-31.4380, -64.1720]
-        ], {color: 'red', fillOpacity: 0.7})
-        .bindPopup('<b>Güemes</b><br>300 ilegales<br>Extorsión $5k+ eventos')
-        .addTo(map);
-
-        // Centro (ilegales)
-        L.polygon([
-            [-31.4120, -64.1880], [-31.4120, -64.1820], 
-            [-31.4180, -64.1820], [-31.4180, -64.1880]
-        ], {color: 'red', fillOpacity: 0.7})
-        .bindPopup('<b>Centro</b><br>200 ilegales<br>SEMM + invasores')
-        .addTo(map);
-
-        // Nueva Córdoba (ilegales)
-        L.polygon([
-            [-31.4250, -64.1880], [-31.4250, -64.1820], 
-            [-31.4320, -64.1820], [-31.4320, -64.1880]
-        ], {color: 'red', fillOpacity: 0.7})
-        .bindPopup('<b>Nueva Córdoba</b><br>250 ilegales<br>Top detenciones')
-        .addTo(map);
-
-        // Parque Sarmiento (gratis)
-        L.polygon([
-            [-31.4520, -64.1650], [-31.4520, -64.1550], 
-            [-31.4600, -64.1550], [-31.4600, -64.1650]
-        ], {color: 'green', fillOpacity: 0.4})
-        .bindPopup('<b>Parque Sarmiento</b><br>GRATIS desde marzo 2025')
-        .addTo(map);
-    </script>
+<script>
+var m=L.map('map').setView([-31.4201,-64.1888],13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap'}).addTo(m);
+L.polygon([[-31.4065,-64.182],[-31.4065,-64.178],[-31.415,-64.178],[-31.415,-64.182]],{color:'orange',fillOpacity:.6}).bindPopup('<b>Alta Córdoba (CBA)</b><br>320 cuadras<br>Noel Quinteros').addTo(m);
+L.polygon([[-31.425,-64.195],[-31.425,-64.19],[-31.432,-64.19],[-31.432,-64.195]],{color:'orange',fillOpacity:.6}).bindPopup('<b>Alberdi (Aparcar)</b><br>280 cuadras<br>Roxana Garay').addTo(m);
+L.polygon([[-31.43,-64.172],[-31.43,-64.165],[-31.438,-64.165],[-31.438,-64.172]],{color:'red',fillOpacity:.7}).bindPopup('<b>Güemes</b><br>300 ilegales').addTo(m);
+L.polygon([[-31.412,-64.188],[-31.412,-64.182],[-31.418,-64.182],[-31.418,-64.188]],{color:'red',fillOpacity:.7}).bindPopup('<b>Centro</b><br>200 ilegales').addTo(m);
+L.polygon([[-31.425,-64.188],[-31.425,-64.182],[-31.432,-64.182],[-31.432,-64.188]],{color:'red',fillOpacity:.7}).bindPopup('<b>Nueva Córdoba</b><br>250 ilegales').addTo(m);
+L.polygon([[-31.452,-64.165],[-31.452,-64.155],[-31.46,-64.155],[-31.46,-64.165]],{color:'green',fillOpacity:.4}).bindPopup('<b>Parque Sarmiento</b><br>GRATIS').addTo(m);
+</script>
 </body>
 </html>
